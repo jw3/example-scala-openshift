@@ -5,6 +5,7 @@ Simple example to test out a Scala S2I build
 
 To use it, install S2I: https://github.com/openshift/source-to-image
 
+
 ### Sample invocation:
 
 `s2i build https://github.com/jw3/example-scala-openshift.git jwiii/sbts2i example-scala-openshift`
@@ -12,6 +13,15 @@ To use it, install S2I: https://github.com/openshift/source-to-image
 You can then run the resulting image via:
 
 `docker run <application image>`
+
+
+### Configuration
+
+- `HTTP_HOST`: String; Hostname to bind to
+- `HTTP_PORT`: Integer; Port to listen on
+
+- `LOG_LEVEL`: String; log level, one of `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `ALL` or `OFF` (default `INFO`)
+- `ACTOR_LOG_LEVEL`: String; log level, one of `OFF`, `ERROR`, `WARNING`, `INFO`, `DEBUG` (default `INFO`)
 
 
 ### OpenShift
