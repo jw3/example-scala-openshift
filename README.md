@@ -12,3 +12,12 @@ To use it, install S2I: https://github.com/openshift/source-to-image
 You can then run the resulting image via:
 
 `docker run <application image>`
+
+
+### OpenShift
+
+You can access a free for limited use OpenShift account at: https://www.openshift.com/devpreview/register.html
+
+Create a new OpenShift project an log in using the [oc command line tools](https://github.com/openshift/origin/releases)
+
+`oc new-app jwiii/sbts2i:latest~https://github.com/jw3/example-scala-openshift.git --name='examples2i'`
