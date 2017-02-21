@@ -17,12 +17,17 @@ You can then run the resulting image via:
 
 ### Configuration
 
-- `HTTP_HOST`: String; Hostname to bind to
-- `HTTP_PORT`: Integer; Port to listen on
-
 - `LOG_LEVEL`: String; log level, one of `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `ALL` or `OFF` (default `INFO`)
 - `ACTOR_LOG_LEVEL`: String; log level, one of `OFF`, `ERROR`, `WARNING`, `INFO`, `DEBUG` (default `INFO`)
 
+#### Client
+- `SERVER_HOST`: String; Hostname to bind to
+- `SERVER_PORT`: Integer; Port to listen on
+- `SERVER_PATH`: String; URI Path for the request
+
+#### Server
+- `HTTP_HOST`: String; Hostname to bind to
+- `HTTP_PORT`: Integer; Port to listen on
 
 ### OpenShift
 

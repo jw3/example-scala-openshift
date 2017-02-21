@@ -1,4 +1,4 @@
-package example
+package example.server
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
@@ -9,7 +9,7 @@ import scala.util.{Failure, Success}
 
 
 object Boot extends App with LazyLogging {
-  implicit val system = ActorSystem("examples2i")
+  implicit val system = ActorSystem("example-s2i-server")
   implicit val mat = ActorMaterializer()
 
   import system.dispatcher

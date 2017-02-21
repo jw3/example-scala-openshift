@@ -1,44 +1,73 @@
-organization := "com.github.jw3"
-name := "example-scala-openshift"
-version := "0.1"
+/**
+ *
+ * Projects
+ *
+ */
 
-scalaVersion := "2.12.1"
+lazy val `example` =
+  project.in(file("."))
+  .aggregate(common, client, server)
+  .settings(commonSettings: _*)
+  .enablePlugins(GitVersioning)
 
-scalacOptions ++= Seq(
-  "-encoding", "UTF-8",
+lazy val common =
+  project.in(file("common"))
+  .settings(commonSettings: _*)
+  .settings(libraryDependencies ++= commonLibraries)
+  .settings(name := "common")
+  .enablePlugins(GitVersioning)
 
-  "-feature",
-  "-unchecked",
-  "-deprecation",
+lazy val client =
+  project.in(file("client"))
+  .dependsOn(common)
+  .settings(commonSettings: _*)
+  .settings(libraryDependencies ++= commonLibraries)
+  .settings(name := "client")
+  .enablePlugins(GitVersioning)
 
-  "-language:postfixOps",
-  "-language:implicitConversions",
+lazy val server =
+  project.in(file("server"))
+  .dependsOn(common)
+  .settings(commonSettings: _*)
+  .settings(libraryDependencies ++= commonLibraries)
+  .settings(name := "server")
+  .enablePlugins(GitVersioning)
 
-  "-Ywarn-unused-import",
-  "-Xfatal-warnings",
-  "-Xlint:_"
+
+lazy val commonSettings = Seq(
+  organization := "com.github.jw3",
+  name := "example-scala-openshift",
+  git.useGitDescribe := true,
+  scalaVersion := "2.12.1",
+
+  scalacOptions ++= Seq(
+    "-encoding", "UTF-8",
+
+    "-feature",
+    "-unchecked",
+    "-deprecation",
+
+    "-language:postfixOps",
+    "-language:implicitConversions",
+
+    "-Ywarn-unused-import",
+    "-Xfatal-warnings",
+    "-Xlint:_"
+  )
 )
 
-libraryDependencies ++= {
-  val akkaVersion = "2.4.16"
-  val akkaHttpVersion = "10.0.1"
+lazy val commonLibraries = {
+  val akkaVersion = "2.4.17"
+  val akkaHttpVersion = "10.0.3"
   val scalatestVersion = "3.0.1"
 
   Seq(
-    "com.typesafe.play" %% "play-ahc-ws-standalone" % "1.0.0-M3",
-
     "com.typesafe.akka" %% "akka-actor" % akkaVersion,
     "com.typesafe.akka" %% "akka-http" % akkaHttpVersion,
     "com.typesafe.akka" %% "akka-http-core" % akkaHttpVersion,
-    "com.typesafe.akka" %% "akka-http-spray-json" % akkaHttpVersion,
 
     "com.typesafe.akka" %% "akka-slf4j" % akkaVersion,
     "ch.qos.logback" % "logback-classic" % "1.1.9",
-    "com.typesafe.scala-logging" %% "scala-logging" % "3.5.0",
-
-    "org.scalactic" %% "scalactic" % scalatestVersion % Test,
-    "org.scalatest" %% "scalatest" % scalatestVersion % Test,
-    "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test,
-    "com.typesafe.akka" %% "akka-stream-testkit" % akkaVersion % Test
+    "com.typesafe.scala-logging" %% "scala-logging" % "3.5.0"
   )
 }
