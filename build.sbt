@@ -23,7 +23,7 @@ lazy val client =
   .settings(commonSettings: _*)
   .settings(libraryDependencies ++= commonLibraries)
   .settings(name := "client")
-  .enablePlugins(GitVersioning)
+  .enablePlugins(JavaAppPackaging, GitVersioning)
 
 lazy val server =
   project.in(file("server"))
@@ -31,7 +31,7 @@ lazy val server =
   .settings(commonSettings: _*)
   .settings(libraryDependencies ++= commonLibraries)
   .settings(name := "server")
-  .enablePlugins(GitVersioning)
+  .enablePlugins(JavaAppPackaging, GitVersioning)
 
 
 lazy val commonSettings = Seq(
