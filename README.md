@@ -21,13 +21,13 @@ You can then run the resulting image via:
 - `ACTOR_LOG_LEVEL`: String; log level, one of `OFF`, `ERROR`, `WARNING`, `INFO`, `DEBUG` (default `INFO`)
 
 #### Client
-- `SERVER_HOST`: String; Hostname to bind to
-- `SERVER_PORT`: Integer; Port to listen on
-- `SERVER_PATH`: String; URI Path for the request
+- `EXAMPLE_SERVER_HOST`: String; Hostname to bind to
+- `EXAMPLE_SERVER_PORT`: Integer; Port to listen on
+- `EXAMPLE_SERVER_PATH`: String; URI Path for the request
 
 #### Server
-- `HTTP_HOST`: String; Hostname to bind to
-- `HTTP_PORT`: Integer; Port to listen on
+- `EXAMPLE_HTTP_HOST`: String; Hostname to bind to
+- `EXAMPLE_HTTP_PORT`: Integer; Port to listen on
 
 ### OpenShift
 
