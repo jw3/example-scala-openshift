@@ -23,11 +23,16 @@ You can then run the resulting image via:
 #### Client
 - `EXAMPLE_SERVER_HOST`: String; Hostname to bind to
 - `EXAMPLE_SERVER_PORT`: Integer; Port to listen on
-- `EXAMPLE_SERVER_PATH`: String; URI Path for the request
+- `EXAMPLE_HELLO_INTERVAL`: Duration; example `10s` for 10 seconds (default `5s`)
+- `EXAMPLE_LOAD_INTERVAL`: Duration; (defatult `10s`)
+- `EXAMPLE_LOAD_PCT`: Double (default `.25`)
+- `EXAMPLE_LOAD_TIME`: Duration: (default `30s`)
+
 
 #### Server
 - `EXAMPLE_HTTP_HOST`: String; Hostname to bind to
 - `EXAMPLE_HTTP_PORT`: Integer; Port to listen on
+- `EXAMPLE_MESSAGE`: String; Message to print from `hello` endpoint (default `hello, openshift`)
 
 ### OpenShift
 
