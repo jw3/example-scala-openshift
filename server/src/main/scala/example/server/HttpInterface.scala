@@ -7,13 +7,11 @@ import com.typesafe.scalalogging.LazyLogging
 
 
 object HttpInterface extends LazyLogging {
-  def routes: Route =
+  def routes(msg: String): Route =
     logRequestResult("server-request", Logging.InfoLevel) {
       get {
         pathPrefix("hello") {
-          extractActorSystem { sys ⇒
-            complete("openshift")
-          }
+          complete(msg)
         }
       }
     }

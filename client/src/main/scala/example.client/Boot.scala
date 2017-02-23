@@ -35,6 +35,6 @@ object Util {
       _.entity.dataBytes.map(_.utf8String).runWith(Sink.head)
     )
     .runWith(Sink.head)
-    .flatMap(_.map(v ⇒ s"$path $v"))
+    .flatMap(_.map(v ⇒ v))
   }
 }
