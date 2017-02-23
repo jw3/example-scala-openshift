@@ -29,16 +29,20 @@ object Boot extends App with LazyLogging {
   val time = conf.getDuration("load.time")
   val helloInterval = conf.getDuration("ping.hello").getSeconds
   val loadInterval = conf.getDuration("ping.load").getSeconds
+  val loadEnabled = conf.getBoolean("load.enabled")
   implicit val conn = Http().outgoingConnection(host, port)
 
   system.scheduler.schedule(0 seconds, helloInterval seconds) {
     ping.foreach(v ⇒ logger.info(v))
   }
 
-  system.scheduler.schedule(0 seconds, loadInterval seconds) {
-    logger.info(s"injecting $pct% load for $time")
-    load(pct, time)
+  if (loadEnabled) {
+    system.scheduler.schedule(0 seconds, loadInterval seconds) {
+      logger.info(s"generating $pct% load for $time")
+      load(pct, time)
+    }
   }
+  else logger.info("load generation is disabled")
 }
 
 object Util {

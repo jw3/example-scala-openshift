@@ -27,6 +27,7 @@ You can then run the resulting image via:
 - `EXAMPLE_LOAD_INTERVAL`: Duration; (defatult `10s`)
 - `EXAMPLE_LOAD_PCT`: Double (default `.25`)
 - `EXAMPLE_LOAD_TIME`: Duration: (default `30s`)
+- `EXAMPLE_LOAD_ENABLED': Boolean: enable load generation (default `false`)
 
 
 #### Server
